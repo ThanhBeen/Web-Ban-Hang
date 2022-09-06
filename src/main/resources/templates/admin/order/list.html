@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/admin/layout/indexx.html :: dynamic(~{::main})}">
+
+<body>
+<main>
+
+    <div class="container" id="men">
+        <section class="row" >
+            <div class="col mt-4 ">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Your OrderPurchased</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-inverse">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>No.</th>
+                                <th>Order No.</th>
+                                <th>Order Date</th>
+                                <th>Address</th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="order, state : ${orders}">
+                                <td th:text="${state.index}"></td>
+                                <td th:text="${order.orderId}"></td>
+                                <td th:text="${order.orderDate}"></td>
+                                <td th:text="${order.address}"></td>
+                                <td>
+                                    <a th:href="@{|/order/detail/${order.orderId}|}"
+                                       class="btn btn-outline-dark">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
+</html>
